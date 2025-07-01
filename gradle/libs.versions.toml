@@ -1,5 +1,31 @@
 [versions]
 kreate = "0.1.0"
+coroutines = "1.10.2"
+kaml = "0.83.0"
+datetime = "0.7.0"
+logback = "1.5.18"
+json = "1.9.0"
+kotest = "6.0.0.M4"
 
 [libraries]
+# coroutines
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-reactive = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive", version.ref = "coroutines" }
+
+# serialization
+kaml = { module = "com.charleskorn.kaml:kaml", version.ref = "kaml" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "json" }
+
+# datetime
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
+
+# logging
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+# testing
+kotest-assertion-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+
+# actual plugins, but needed as dependencies in buildSrc
 kreate = { module = "com.davils.kreate:com.davils.kreate.gradle.plugin", version.ref = "kreate" }
