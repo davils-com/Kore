@@ -1,4 +1,4 @@
-package com.davils.kore.delay
+package com.davils.kore.interval
 
 import kotlinx.coroutines.delay
 import kotlin.time.Duration
