@@ -1,0 +1,5 @@
+[versions]
+kreate = "0.1.0"
+
+[libraries]
+kreate = { module = "com.davils.kreate:com.davils.kreate.gradle.plugin", version.ref = "kreate" }
