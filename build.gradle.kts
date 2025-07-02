@@ -1,21 +1,26 @@
 plugins {
-    kotlin("jvm") version "2.1.21"
+    `kore-core`
 }
 
 group = "com.davils.kore"
-version = "1.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
-    testImplementation(kotlin("test"))
-}
+    // coroutines
+    api(libs.kotlinx.coroutines.core)
+    api(libs.kotlinx.coroutines.reactive)
 
-tasks.test {
-    useJUnitPlatform()
-}
-kotlin {
-    jvmToolchain(21)
+    // serialization
+    api(libs.kotlinx.serialization.json)
+    api(libs.kaml)
+
+    // datetime
+    api(libs.kotlinx.datetime)
+
+    // logging
+    api(libs.logback)
+
+    // Testing
+    testImplementation(libs.kotest.assertion.core)
+    testImplementation(libs.kotest.property)
+    testImplementation(libs.kotest.runner.junit5)
 }
