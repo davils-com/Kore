@@ -1,0 +1,43 @@
+stages:
+  - build
+  - test
+  - publish
+
+variables:
+  TESTS_ENABLED: "true"
+  JDK_VERSION: "jdk21-graal"
+
+image: gradle:$JDK_VERSION
+
+build:
+  stage: build
+  script:
+    - gradle build -x check -x test
+  artifacts:
+    expire_in: 15 days
+
+test:
+  stage: test
+  needs:
+    - job: build
+      optional: false
+  rules:
+    - if: $TESTS_ENABLED == "true"
+  script:
+    - gradle check test
+  artifacts:
+    reports:
+      junit:
+        - "**build/test-results/test/TEST-*.xml"
+
+publish:
+  stage: publish
+  only:
+    - tags
+  needs:
+    - job: build
+      optional: false
+    - job: test
+      optional: true
+  script:
+    - gradle publish
