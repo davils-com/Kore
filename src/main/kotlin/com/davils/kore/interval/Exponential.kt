@@ -64,14 +64,15 @@ public class ExponentialDelay(
  * ```
  *
  * @param initialDelayMillis The delay for the first attempt in milliseconds
+ * @param factor The base factor for the exponential calculation (default is 2.0)
  * @param maxDelayMillis The maximum delay in milliseconds (default is 5 minutes)
  * @return An ExponentialDelay instance configured with the specified parameters
  * @since 0.1.0
  */
-public fun exponentialDelay(initialDelayMillis: Long, maxDelayMillis: Long = 5 * 60 * 1000L): ExponentialDelay {
+public fun exponentialDelay(initialDelayMillis: Long, factor: Double = 2.0, maxDelayMillis: Long = 5 * 60 * 1000L): ExponentialDelay {
     val delayStrategy = ExponentialDelay(
         initialDelayMillis.milliseconds,
-        2.0,
+        factor,
         maxDelayMillis.milliseconds
     )
     return delayStrategy
@@ -109,11 +110,12 @@ public fun exponentialDelay(initialDelayMillis: Long, maxDelayMillis: Long = 5 *
 public fun <T> exponentialRetry(
     maxAttempts: Int,
     initialDelayMillis: Long,
+    factor: Double = 2.0,
     maxDelayMillis: Long = 5 * 60 * 1000L,
     retryableExceptions: Set<Class<out Throwable>> = emptySet(),
     block: () -> T
 ): T {
-    val delayStrategy = exponentialDelay(initialDelayMillis, maxDelayMillis)
+    val delayStrategy = exponentialDelay(initialDelayMillis, factor, maxDelayMillis)
     val retryPolicy = DefaultRetryPolicy(maxAttempts, delayStrategy, retryableExceptions)
     return withRetry(retryPolicy, block)
 }
@@ -151,11 +153,12 @@ public fun <T> exponentialRetry(
 public suspend fun <T> exponentialRetrySuspend(
     maxAttempts: Int,
     initialDelayMillis: Long,
+    factor: Double = 2.0,
     maxDelayMillis: Long = 5 * 60 * 1000L,
     retryableExceptions: Set<Class<out Throwable>> = emptySet(),
     block: suspend () -> T
 ): T {
-    val delayStrategy = exponentialDelay(initialDelayMillis, maxDelayMillis)
+    val delayStrategy = exponentialDelay(initialDelayMillis, factor, maxDelayMillis)
     val retryPolicy = DefaultRetryPolicy(maxAttempts, delayStrategy, retryableExceptions)
     return withRetrySuspend(retryPolicy, block)
 }
