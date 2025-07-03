@@ -14,12 +14,8 @@ package com.davils.kore
  *     // DSL methods and properties
  * }
  * ```
- * 
- * Security considerations:
- * - Properly scoped DSLs help prevent accidental access to unrelated contexts
- * - Enhances code readability and maintainability
- * 
- * @sinc 0.1.0
+ *
+ * @since 0.1.0
  */
 @DslMarker
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
@@ -51,7 +47,7 @@ public annotation class DavilsDsl
  * - Implementation details and behavior may change, potentially affecting security properties
  * - Users should exercise caution when using experimental APIs in production environments
  * 
- * @sinc 0.1.0
+ * @since 0.1.0
  */
 @RequiresOptIn(level = RequiresOptIn.Level.WARNING, message = "This API is experimental and may change in future releases.")
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY)
@@ -84,7 +80,7 @@ public annotation class DavilsExperimental
  * - Using internal APIs may bypass intended security controls or validations
  * - Changes to internal APIs may occur without notice, potentially breaking dependent code
  * 
- * @sinc 0.1.0
+ * @since 0.1.0
  */
 @RequiresOptIn(level = RequiresOptIn.Level.ERROR, message = "This API is internal and should not be used outside of the library.")
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY)
