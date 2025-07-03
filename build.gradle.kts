@@ -1,8 +1,36 @@
+import com.davils.kreate.publish.VCS
+
 plugins {
     `kore-core`
 }
 
 group = "com.davils.kore"
+
+kreate {
+    publish {
+        inceptionYear = 2025
+        vcs = VCS.GITLAB
+
+        scm {
+            url = "https://gitlab.davils.com/davils/projects/kore"
+            connection = "scm:git:https://gitlab.davils.com/davils/projects/kore.git"
+            developerConnection = "scm:git:ssh://gitlab.davils.com/davils/projects/kore.git"
+        }
+
+        issue {
+            url = "https://gitlab.davils.com/davils/projects/kore/-/issues"
+        }
+
+        ci {
+            url = "https://gitlab.davils.com/davils/projects/kore/-/pipelines"
+        }
+
+        license {
+            name = "Apache-2.0"
+            url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+    }
+}
 
 dependencies {
     // coroutines
