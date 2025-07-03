@@ -25,12 +25,7 @@ import kotlin.time.Duration.Companion.milliseconds
  * // Fifth attempt: 900ms (100ms + 4*200ms)
  * // Sixth attempt: 1000ms (capped by maxDelay)
  * ```
- * 
- * Security considerations:
- * - For security-sensitive operations, ensure maxDelay is set to prevent excessive resource consumption
- * - Linear growth provides more predictable resource usage compared to exponential growth
- * - Consider the implications of retry attempts on rate-limited APIs or services
- * 
+ *
  * @param initialDelay The delay for the first attempt
  * @param increment The amount to increase the delay by for each subsequent attempt
  * @param maxDelay The maximum delay to return (optional)
@@ -63,14 +58,11 @@ public class LinearDelay(
  *     // Your operation here
  * }
  * ```
- * 
- * Security considerations:
- * - For security-sensitive operations, ensure maxDelayMillis is set to prevent excessive resource consumption
- * - Consider the implications of retry attempts on rate-limited APIs or services
- * 
+ *
  * @param initialDelayMillis The delay for the first attempt in milliseconds
  * @param incrementMillis The amount to increase the delay by for each subsequent attempt in milliseconds
  * @param maxDelayMillis The maximum delay in milliseconds (optional)
+ *
  * @return A linear delay strategy
  * @since 0.1.0
  */
@@ -104,19 +96,14 @@ public fun linearDelay(
  *     api.fetchData()
  * }
  * ```
- * 
- * Security considerations:
- * - Be cautious when retrying operations that modify state or have side effects
- * - Consider the security implications of retrying authentication or authorization operations
- * - Ensure sensitive operations have appropriate timeout and retry limits
- * - Linear backoff provides more predictable resource usage compared to exponential backoff
- * 
+ *
  * @param maxAttempts The maximum number of attempts to make (including the initial attempt)
  * @param initialDelayMillis The delay for the first retry in milliseconds
  * @param incrementMillis The amount to increase the delay by for each subsequent retry in milliseconds
  * @param maxDelayMillis The maximum delay in milliseconds (optional)
  * @param retryableExceptions The set of exception types that should trigger a retry (empty means all exceptions are retryable)
  * @param block The function to execute
+ *
  * @return The result of the function
  * @throws Exception The last exception that occurred if all retries failed
  * @since 0.1.0

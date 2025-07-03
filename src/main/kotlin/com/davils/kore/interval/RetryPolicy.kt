@@ -48,6 +48,7 @@ public interface RetryPolicy {
      *
      * @param attempt The current attempt number (1-based)
      * @param exception The exception that caused the failure
+     *
      * @return True if the operation should be retried, false otherwise
      * @since 0.1.0
      */
@@ -147,6 +148,7 @@ public class DefaultRetryPolicy(
  *
  * @param retryPolicy The retry policy to use
  * @param block The function to execute
+ *
  * @return The result of the function
  * @throws Exception The last exception that occurred if all retries failed
  * @since 0.1.0
@@ -192,6 +194,7 @@ public fun <T> withRetry(retryPolicy: RetryPolicy, block: () -> T): T {
  *
  * @param retryPolicy The retry policy to use
  * @param block The suspending function to execute
+ *
  * @return The result of the function
  * @throws Exception The last exception that occurred if all retries failed
  * @since 0.1.0
