@@ -1,5 +1,5 @@
 [versions]
-kreate = "0.1.1"
+kreate = "0.1.2"
 coroutines = "1.10.2"
 kaml = "0.83.0"
 datetime = "0.7.0"

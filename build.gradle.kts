@@ -1,4 +1,4 @@
-import com.davils.kreate.publish.VCS
+import com.davils.publish.VCS
 
 plugins {
     `kore-core`
