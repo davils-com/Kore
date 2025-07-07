@@ -1,4 +1,4 @@
-package com.davils.kore.interval
+package com.davils.interval
 
 import kotlin.math.pow
 import kotlin.time.Duration

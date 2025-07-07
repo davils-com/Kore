@@ -1,4 +1,4 @@
-package com.davils.kore.serialization
+package com.davils.serialization
 
 import kotlinx.serialization.json.Json
 

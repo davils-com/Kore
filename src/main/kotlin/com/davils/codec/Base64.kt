@@ -1,4 +1,4 @@
-package com.davils.kore.codec
+package com.davils.codec
 
 import java.util.Base64
 

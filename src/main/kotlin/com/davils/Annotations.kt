@@ -1,4 +1,4 @@
-package com.davils.kore
+package com.davils
 
 /**
  * Marks a class or type as part of the Davils DSL.

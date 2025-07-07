@@ -1,4 +1,4 @@
-package com.davils.kore.serialization
+package com.davils.serialization
 
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration

@@ -4,7 +4,7 @@ plugins {
     `kore-core`
 }
 
-group = "com.davils.kore"
+group = "com.davils"
 
 kreate {
     publish {
